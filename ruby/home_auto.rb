@@ -23,7 +23,7 @@ class HomeAuto
         id: switch['id'],
         status: true,
         name: switch['name'],
-        pin: PiPiper::Pin.new(:pin => switch['pin_num'], :direction => :out)
+        pin: switch['pin_num']
       }
     end
   end
@@ -33,11 +33,12 @@ class HomeAuto
   end
 
   def set_switch(id, status)
+    pi_pin = PiPiper::Pin.new(:pin => find_switch(id)[:pin], :direction => :out)
     case status
     when 'true'
-      find_switch(id)[:pin].on
+      pi_pin.on
     when 'false'
-      find_switch(id)[:pin].off
+      pi_pin.off
     else
       raise "invalid switch status: #{status}"
     end
