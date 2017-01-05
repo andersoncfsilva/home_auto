@@ -18,6 +18,6 @@ $(function(){
 
   function handle_message(m) {
     info = JSON.parse(m.data)
-    $("#switch_" + info.switch_id).prop('checked', info.switch_status === 'true').flipswitch("refresh");
+    $("#" + info.switch_id).prop('checked', info.switch_status === 'true').flipswitch("refresh");
   }
 });
