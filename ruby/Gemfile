@@ -1,12 +1,13 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "sinatra"
-gem "pi_piper"
+gem 'sinatra'
+gem 'sinatra-websocket'
+gem 'pi_piper'
 
 group :development do
-  gem "pry"
+  gem 'pry'
 end
 
 group :test do
-  gem "rspec"
+  gem 'rspec'
 end

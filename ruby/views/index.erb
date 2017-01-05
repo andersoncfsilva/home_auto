@@ -20,14 +20,14 @@
   <form>
     <% @dimmers.each do |dimmer| %>
       <label for="<%= dimmer[:id] %>"><%= dimmer[:name] %></label>
-      <input type="range" class="dimmer" name="<%= dimmer[:id] %>" id="<%= dimmer[:id] %>" value="<%= dimmer[:value] %>" min="0" max="100">
+      <input type="range" class="dimmer" name="<%= dimmer[:id] %>" id="dimmer_<%= dimmer[:id] %>" value="<%= dimmer[:value] %>" min="0" max="100">
     <% end %>
 
     <% @switches.each do |switch| %>
         <label for="<%= switch[:id] %>"><%= switch[:name] %></label>
-        <input type="checkbox" class="switch" id="<%= switch[:id] %>" <%= switch[:status] ? 'checked' : '' %> data-role="flipswitch">
+        <input type="checkbox" class="switch" id="switch_<%= switch[:id] %>" <%= switch[:status] ? 'checked' : '' %> data-role="flipswitch">
     <% end %>
-      
+
 
     </form>
   </div><!-- /content -->
