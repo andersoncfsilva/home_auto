@@ -5,7 +5,7 @@ gem 'sinatra-websocket'
 gem 'pi_piper'
 
 group :development do
-  gem 'pry'
+  gem 'byebug'
 end
 
 group :test do

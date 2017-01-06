@@ -1,6 +1,7 @@
 class HomeAuto
   def initialize(config)
     @config = config
+    @pins = []
   end
 
   def dimmers
@@ -14,7 +15,7 @@ class HomeAuto
   end
 
   def find_dimmer(id)
-    dimmers.find{|h| h[:id] == id}
+    dimmers.find { |h| h[:id] == id }
   end
 
   def switches
@@ -29,11 +30,16 @@ class HomeAuto
   end
 
   def find_switch(id)
-    switches.find{|h| h[:id] == id}
+    switches.find { |h| h[:id] == id }
+  end
+
+  def get_pin(pin)
+    @pins[pin] = PiPiper::Pin.new(pin: pin, direction: :out) unless @pins[pin]
   end
 
   def set_switch(id, status)
-    pi_pin = PiPiper::Pin.new(:pin => find_switch(id)[:pin], :direction => :out)
+    pin = find_switch(id)[:pin]
+    pi_pin = get_pin(pin)
     case status
     when 'true'
       pi_pin.on
@@ -43,5 +49,4 @@ class HomeAuto
       raise "invalid switch status: #{status}"
     end
   end
-
 end
