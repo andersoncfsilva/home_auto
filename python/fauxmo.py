@@ -399,8 +399,8 @@ class debug_cmd_handler(object):
 # list will be used.
 
 FAUXMOS = [
-    ['master room lights', rest_api_handler('switch_room_1', 'switch_room_1')],
-    ['kids room lights', rest_api_handler('switch_room_2', 'switch_room_2')],
+    ['master room', rest_api_handler('switch_room_1', 'switch_room_1')],
+    ['kids room', rest_api_handler('switch_room_2', 'switch_room_2')],
 ]
 
 
