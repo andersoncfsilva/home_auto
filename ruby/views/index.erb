@@ -25,7 +25,7 @@
 
     <% @switches.each do |switch| %>
         <label for="<%= switch[:id] %>"><%= switch[:name] %></label>
-        <input type="checkbox" class="switch" id="switch_<%= switch[:id] %>" <%= switch[:status] ? 'checked' : '' %> data-role="flipswitch">
+        <input type="checkbox" class="switch" id="<%= switch[:id] %>" <%= switch[:status] ? 'checked' : '' %> data-role="flipswitch">
     <% end %>
 
 

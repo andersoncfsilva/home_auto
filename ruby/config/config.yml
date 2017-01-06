@@ -6,10 +6,10 @@ development:
       - id: 'room_1'
         name: 'Kitchen'
     switches:
-      - id: 'room_1'
+      - id: 'switch_room_1'
         name: 'Master room'
         pin_num: 22
-      - id: 'room_2'
+      - id: 'switch_room_2'
         name: 'Kids room'
         pin_num: 23
 test:
