@@ -35,6 +35,7 @@ class HomeAuto
 
   def get_pin(pin)
     @pins[pin] = PiPiper::Pin.new(pin: pin, direction: :out) unless @pins[pin]
+    @pins[pin]
   end
 
   def set_switch(id, status)
