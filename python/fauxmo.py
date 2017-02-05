@@ -360,33 +360,20 @@ class upnp_broadcast_responder(object):
 # and off command are invoked respectively. It ignores any return data.
 
 class rest_api_handler(object):
-    def __init__(self, on_cmd, off_cmd):
+    def __init__(self, switch_id):
         self.endpoint = 'http://localhost:4567/set_switch'
-        self.on_cmd = on_cmd
-        self.off_cmd = off_cmd
+        self.switch_id = switch_id
 
     def on(self):
-        payload = {'switch_id': self.on_cmd, 'switch_status': 'true'}
-        r = requests.post(self.endpoint, data=payload)
-        return r.status_code == 200
+        return self.do_request('true')
 
     def off(self):
-        payload = {'switch_id': self.off_cmd, 'switch_status': 'false'}
+        return self.do_request('false')
+
+    def do_request(self, status):
+        payload = {'switch_id': self.switch_id, 'switch_status': status}
         r = requests.post(self.endpoint, data=payload)
         return r.status_code == 200
-
-class debug_cmd_handler(object):
-    def __init__(self, on_cmd, off_cmd):
-        self.on_cmd = on_cmd
-        self.off_cmd = off_cmd
-
-    def on(self):
-        dbg(self.on_cmd)
-        return True
-
-    def off(self):
-        dbg(self.off_cmd)
-        return True
 
 # Each entry is a list with the following elements:
 #
@@ -399,8 +386,8 @@ class debug_cmd_handler(object):
 # list will be used.
 
 FAUXMOS = [
-    ['master room', rest_api_handler('switch_room_1', 'switch_room_1')],
-    ['kids room', rest_api_handler('switch_room_2', 'switch_room_2')],
+    ['master room', rest_api_handler('switch_room_1')],
+    ['kids room', rest_api_handler('switch_room_2')],
 ]
 
 
