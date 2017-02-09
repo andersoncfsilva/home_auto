@@ -386,8 +386,8 @@ class rest_api_handler(object):
 # list will be used.
 
 FAUXMOS = [
-    ['master room', rest_api_handler('switch_room_1')],
-    ['kids room', rest_api_handler('switch_room_2')],
+    ['living room light', rest_api_handler('living_room_light')],
+    ['dinner room light', rest_api_handler('dinner_room_light')],
 ]
 
 
