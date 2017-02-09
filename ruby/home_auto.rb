@@ -41,11 +41,11 @@ class HomeAuto
   def set_switch(id, status)
     pin = find_switch(id)[:pin]
     pi_pin = get_pin(pin)
-    case status
-    when 'true'
-      pi_pin.on? ? pi_pin.off : pi_pin.on
-    when 'false'
-      pi_pin.off? ? pi_pin.on : pi_pin.off
+
+    if status == 'true'
+        pi_pin.on
+    elsif status == 'false'
+        pi_pin.off
     else
       raise "invalid switch status: #{status}"
     end
