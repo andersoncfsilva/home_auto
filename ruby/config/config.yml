@@ -6,11 +6,11 @@ development:
       - id: 'room_1'
         name: 'Kitchen'
     switches:
-      - id: 'living_room_light'
-        name: 'Living Room Light'
+      - id: 'main_light'
+        name: 'Main Light'
         pin_num: 17
-      - id: 'dinner_room_light'
-        name: 'Dinner Room Light'
+      - id: 'secondary_light'
+        name: 'Secondary Light'
         pin_num: 4
 test:
   home_auto:
