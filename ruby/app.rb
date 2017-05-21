@@ -14,24 +14,24 @@ config = YAML.load_file('config/config.yml')[settings.environment.to_s]
 home_auto = HomeAuto.new(config['home_auto'])
 
 get '/' do
-  if !request.websocket?
-    @dimmers = home_auto.dimmers
-    @switches = home_auto.switches
-    @title = 'Home Auto'
-    erb :index
-  else
-    request.websocket do |ws|
-      ws.onopen do
-        ws.send('{"message": "Hello World!"}')
-        settings.sockets << ws
-      end
-      ws.onmessage do |msg|
-        EM.next_tick { settings.sockets.each { |s| s.send(msg) } }
-      end
-      ws.onclose do
-        warn('websocket closed')
-        settings.sockets.delete(ws)
-      end
+  @dimmers = home_auto.dimmers
+  @switches = home_auto.switches
+  @title = 'Home Auto'
+  erb :index
+end
+
+get '/socket' do
+  request.websocket do |ws|
+    ws.onopen do
+      ws.send('{"message": "Hello World!"}')
+      settings.sockets << ws
+    end
+    ws.onmessage do |msg|
+      EM.next_tick { settings.sockets.each { |s| s.send(msg) } }
+    end
+    ws.onclose do
+      warn('websocket closed')
+      settings.sockets.delete(ws)
     end
   end
 end

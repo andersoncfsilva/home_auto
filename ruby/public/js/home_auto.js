@@ -11,7 +11,7 @@ $(function(){
     $.post('/set_switch', {switch_status: switch_status, switch_id: switch_id});
   });
 
-  var ws = new WebSocket('ws://' + window.location.host + window.location.pathname);
+  var ws = new WebSocket('ws://' + window.location.host + '/socket');
   ws.onopen    = function()  { console.log('websocket opened'); };
   ws.onclose   = function()  { console.log('websocket closed'); };
   ws.onmessage = handle_message;
