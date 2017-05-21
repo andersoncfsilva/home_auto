@@ -5,6 +5,7 @@ class HomeAuto
   end
 
   def dimmers
+    return [] if @config['dimmers'].nil?
     @config['dimmers'].map do |dimmer|
       {
         id: dimmer['id'],
@@ -19,6 +20,7 @@ class HomeAuto
   end
 
   def switches
+    return [] if @config['switches'].nil?
     @config['switches'].map do |switch|
       {
         id: switch['id'],
