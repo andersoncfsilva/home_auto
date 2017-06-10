@@ -1,0 +1,17 @@
+mqtt:
+  host: 'home.auto'
+  port: '1883'
+  ws_port: '1884'
+  topic: 'home_auto/#'
+switches:
+  - id: 'main_light'
+    name: 'Main Light'
+    pin_num: 17
+  - id: 'dinner_light'
+    name: 'Dinner Light'
+    pin_num: 4
+#dimmers:
+#  - id: 'room_0'
+#    name: 'Living room'
+#  - id: 'room_1'
+#    name: 'Kitchen'

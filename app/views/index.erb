@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Home Auto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/jquery.mobile-1.4.5.min.css" />
+  <link rel="manifest" href="/manifest.json">
+  <script>
+    window.broker_host = '<%= @broker_host %>'
+    window.broker_ws_port = <%= @broker_ws_port %>
+  </script>
+</head>
+
+<body>
+  <div data-role="page">
+    <div data-role="header">
+      <h1>Home Auto</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">
+    <form>
+      <% @dimmers.each do |dimmer| %>
+        <label for="<%= dimmer[:id] %>"><%= dimmer[:name] %></label>
+        <input type="range" class="dimmer" name="<%= dimmer[:id] %>" id="dimmer_<%= dimmer[:id] %>" value="<%= dimmer[:value] %>" min="0" max="100">
+      <% end %>
+
+      <% @switches.each do |switch| %>
+          <label for="<%= switch[:id] %>"><%= switch[:name] %></label>
+          <input type="checkbox" class="switch" id="<%= switch[:id] %>" <%= switch[:status] ? 'checked' : '' %> data-role="flipswitch">
+      <% end %>
+
+
+      </form>
+    </div><!-- /content -->
+
+  </div><!-- /page -->
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.mobile-1.4.5.min.js"></script>
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <script src="/js/home_auto.js"></script>
+</body>
+</html>

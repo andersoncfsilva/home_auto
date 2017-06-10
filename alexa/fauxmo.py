@@ -35,8 +35,8 @@ import sys
 import time
 import urllib
 import uuid
-
-
+import yaml
+import os
 
 # This XML is the minimum needed to define one of our virtual switches
 # to the Amazon Echo
@@ -385,11 +385,14 @@ class rest_api_handler(object):
 # 16 switches it can control. Only the first 16 elements of the FAUXMOS
 # list will be used.
 
-FAUXMOS = [
-    ['Main light', rest_api_handler('main_light')],
-    ['Dinner light', rest_api_handler('dinner_light')],
-]
+config_path = os.path.join(os.path.dirname(__file__), '..', 'config/config.yml')
+config_file = open(config_path, 'r')
+config = yaml.load(config_file)
+FAUXMOS = []
 
+for switch in config['switches']:
+  print("Creating FauxMo device '%s' with id %s" % (switch['name'], switch['id']))
+  FAUXMOS.append([switch['name'], rest_api_handler(switch['id'])])
 
 if len(sys.argv) > 1 and sys.argv[1] == '-d':
     DEBUG = True

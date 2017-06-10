@@ -44,9 +44,9 @@ class HomeAuto
     pin = find_switch(id)[:pin]
     pi_pin = get_pin(pin)
 
-    if status == 'true'
+    if status == 'ON'
       pi_pin.off
-    elsif status == 'false'
+    elsif status == 'OFF'
       pi_pin.on
     else
       raise "invalid switch status: #{status}"
