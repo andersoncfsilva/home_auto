@@ -20,6 +20,9 @@ $(function(){
   $('.switch').on('change', function(event) {
     switch_status = $(this).is(':checked');
     switch_id = $(this).attr('id');
-    client.publish([topic, switch_id].join('/'), switch_status ? 'ON' : 'OFF');
+    topic = [topic, switch_id].join('/');
+    message = switch_status ? 'ON' : 'OFF';
+    options = { 'retain': true };
+    client.publish(topic, message, options);
   });
 });
