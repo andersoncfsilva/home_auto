@@ -1,6 +1,5 @@
 require 'yaml'
 require 'mqtt'
-require 'byebug'
 
 require_relative '../home_auto.rb'
 
