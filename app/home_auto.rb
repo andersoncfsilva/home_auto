@@ -1,3 +1,5 @@
+require 'pi_piper'
+
 class HomeAuto
   def initialize(config)
     @config = config
