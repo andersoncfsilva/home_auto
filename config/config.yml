@@ -1,8 +1,8 @@
 mqtt:
-  host: 'home.auto'
+  host: 'broker.hivemq.com/mqtt'
   port: '1883'
-  ws_port: '1884'
-  topic: 'home_auto/#'
+  ws_port: '8000'
+  root_topic: 'home_auto'
 switches:
   - id: 'main_light'
     name: 'Main Light'

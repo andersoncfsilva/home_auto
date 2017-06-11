@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="/css/jquery.mobile-1.4.5.min.css" />
   <link rel="manifest" href="/manifest.json">
   <script>
-    window.broker_host = '<%= @broker_host %>'
-    window.broker_ws_port = <%= @broker_ws_port %>
+    window.broker_root_topic = '<%= @root_topic %>';
+    window.broker_host = '<%= @broker_host %>';
+    window.broker_ws_port = <%= @broker_ws_port %>;
   </script>
 </head>
 

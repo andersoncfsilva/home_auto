@@ -6,11 +6,15 @@ require_relative '../home_auto.rb'
 config_path = File.join(File.dirname(__FILE__), '../../config/config.yml')
 config = YAML.load_file(config_path)
 
-puts "Connecting to #{config['mqtt']['host']}:#{config['mqtt']['port']}"
-client = MQTT::Client.connect(config['mqtt']['host'], config['mqtt']['port'])
+mqtt_host = config['mqtt']['host']
+mqtt_port = config['mqtt']['port']
+root_topic = config['mqtt']['root_topic']
 
-puts "Subscribing to #{config['mqtt']['topic']}"
-client.subscribe(config['mqtt']['topic'])
+puts "Connecting to #{mqtt_host}:#{mqtt_port}"
+client = MQTT::Client.connect(mqtt_host, mqtt_port)
+
+puts "Subscribing to #{root_topic}"
+client.subscribe("#{root_topic}/#")
 
 home_auto = HomeAuto.new(config)
 puts "Listening..."

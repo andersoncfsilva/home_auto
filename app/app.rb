@@ -13,6 +13,7 @@ home_auto = HomeAuto.new(config)
 get '/' do
   @dimmers = home_auto.dimmers
   @switches = home_auto.switches
+  @root_topic = config['mqtt']['root_topic']
   @broker_host = config['mqtt']['host']
   @broker_ws_port = config['mqtt']['ws_port']
   erb :index
